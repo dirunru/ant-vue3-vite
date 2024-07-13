@@ -11,12 +11,16 @@
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
     "ant-design-vue": "4.x",
-    "vue": "^3.4.29"
+    "dayjs": "^1.11.11",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.29",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
+    "unplugin-auto-import": "^0.18.0",
     "unplugin-vue-components": "^0.27.2",
     "vite": "^5.3.1"
   }
