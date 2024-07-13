@@ -4,7 +4,6 @@ import { resolve } from "path";
 import Components from "unplugin-vue-components/vite";
 import AutoImport from "unplugin-auto-import/vite";
 import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
-import postcsspxtoviewport from "postcss-px-to-viewport-8-with-include";
 
 export default defineConfig({
   resolve: {
