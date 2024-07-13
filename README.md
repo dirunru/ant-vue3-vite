@@ -11,4 +11,5 @@
   npm install dayjs --save // 日期处理
   npm install vue-router@4 // 路由 
   npm install unplugin-auto-import --save-dev // 自动按需引入方法
+  npm install postcss-px-to-viewport-8-with-include --save-dev // px转rpx
 ```

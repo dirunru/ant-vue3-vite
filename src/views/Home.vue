@@ -1,12 +1,15 @@
 <script setup>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import { theme } from "ant-design-vue";
 const { useToken } = theme;
 const { token } = useToken();
 defineProps({
 	msg: String
 });
-
+const homepage = reactive({
+	title: "首页",
+	content: "首页内容"
+});
 const count = ref(0);
 </script>
 
