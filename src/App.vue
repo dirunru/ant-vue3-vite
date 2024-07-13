@@ -21,7 +21,6 @@ import HelloWorld from "./components/HelloWorld.vue";
 		<HelloWorld msg="Vite + Vue" />
 	</a-config-provider>
 </template>
-
 <style scoped>
 .logo {
 	height: 6em;

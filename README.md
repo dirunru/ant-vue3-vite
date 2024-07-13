@@ -6,4 +6,5 @@
   npm install ant-design-vue@4.x --save
   npm install @ant-design/icons-vue --save
   npm install unplugin-vue-components -D // 自动按需引入组件
+  npm install less less-loader --save-dev  // less
 ```
