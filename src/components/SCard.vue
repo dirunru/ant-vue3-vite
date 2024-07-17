@@ -4,6 +4,7 @@
 			<li>msg1 :{{ msg1.message }}</li>
 			<li>propG :{{ propG }}</li>
 			<li>propH: {{ propH() }}</li>
+			<li>isSuccess: {{ isSuccess }}</li>
 		</ul>
 	</div>
 </template>
@@ -39,6 +40,9 @@ defineProps({
 		default() {
 			return "Default function";
 		}
+	},
+	isSuccess: {
+		type: Boolean
 	}
 });
 </script>

@@ -2,7 +2,7 @@
 <template>
 	<a-space wrap>
 		<!-- <div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div> -->
-		<SCard :msg="'提交成功'" :propG="'success'" />
+		<SCard :msg="'提交成功'" :propG="'success'" is-success />
 	</a-space>
 </template>
 
