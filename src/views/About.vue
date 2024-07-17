@@ -1,22 +1,20 @@
+
+<template>
+	<a-space wrap>
+		<!-- <div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div> -->
+		<SCard :msg="'提交成功'" :propG="'success'" />
+	</a-space>
+</template>
+
 <script setup>
 import { ref } from "vue";
+import SCard from "@/components/SCard.vue";
 import { theme } from "ant-design-vue";
 const { useToken } = theme;
 const { token } = useToken();
-defineProps({
-	msg: String
-});
-
-const count = ref(0);
 </script>
 
 
-<template>
-	<h1>{{ msg }}</h1>
-	<a-space wrap>
-		<div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div>
-	</a-space>
-</template>
 
 
 <style scoped>

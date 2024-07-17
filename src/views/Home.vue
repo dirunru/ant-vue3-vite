@@ -6,16 +6,14 @@ const { token } = useToken();
 defineProps({
 	msg: String
 });
-const homepage = reactive({
-	title: "首页",
-	content: "首页内容"
+let homePage = reactive({
+	name: "首页",
+	content: "首页内容",
+	count: 0
 });
-const count = ref(0);
 </script>
 
-
 <template>
-	<h1>{{ msg }}</h1>
 	<a-space wrap>
 		<a-button type="primary">Primary Button</a-button>
 		<a-button>Default Button</a-button>
@@ -25,7 +23,6 @@ const count = ref(0);
 		<div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div>
 	</a-space>
 </template>
-
 
 <style scoped>
 .circle {
