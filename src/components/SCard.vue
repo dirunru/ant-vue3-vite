@@ -10,6 +10,14 @@
 			<slot></slot>
 			<a-divider style="height: 2px; background-color: #7cb305" />
 			<slot name="footer"></slot>
+			<a-divider style="height: 2px; background-color: #7cb305" />
+			<slot name="slotName"></slot>
+		</ul>
+		<!-- 默认插槽被占了具名作用域插槽-->
+		<ul>
+			<li v-for="item in items" :key="item.id">
+				<slot name="item" :item="item" :username="item.name"></slot>
+			</li>
 		</ul>
 	</div>
 </template>
@@ -51,6 +59,10 @@ defineProps({
 		type: Boolean
 	}
 });
+const items = ref([
+	{ id: 1, name: "Item 1" },
+	{ id: 2, name: "Item 2" }
+]);
 </script>
 <style lang='less' scoped>
 </style>
