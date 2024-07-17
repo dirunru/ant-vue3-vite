@@ -38,8 +38,13 @@ const { token } = useToken();
 
 const countModel = ref(0);
 const dynamicSlotName = ref("slotName");
-
-provide("count", countModel);
+const addCount = () => {
+	countModel.value++;
+};
+provide("count", {
+	countModel,
+	addCount
+});
 </script>
 
 
