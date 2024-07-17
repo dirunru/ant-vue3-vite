@@ -1,16 +1,22 @@
 <template>
 	<div>
 		<ul>
+			<slot name="header"></slot>
 			<li>msg1 :{{ msg1.message }}</li>
 			<li>propG :{{ propG }}</li>
 			<li>propH: {{ propH() }}</li>
 			<li>isSuccess: {{ isSuccess }}</li>
+			<a-divider style="height: 2px; background-color: #7cb305" />
+			<slot></slot>
+			<a-divider style="height: 2px; background-color: #7cb305" />
+			<slot name="footer"></slot>
 		</ul>
 	</div>
 </template>
 
 <script setup lang='ts'>
 import { ref, reactive } from "vue";
+// 校验选项中的类型： type String Number Boolean Array Object Date Function Symbol Error
 defineProps({
 	msg: {
 		type: String,
