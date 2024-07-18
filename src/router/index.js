@@ -8,25 +8,32 @@ const routes = [
     path: "/",
     name: "Home",
     component: () => import("@/views/Home.vue"),
+    children: [
+      {
+        path: "", // 空字符串表示根路径下的默认子路由
+        redirect: "about",
+      },
+      {
+        path: "about", // 空字符串表示根路径下的默认子路由
+        name: "About",
+        meta: { title: "获取全局主题", show: true },
+        component: () => import("@/views/About.vue"),
+      },
+      {
+        path: "echart",
+        name: "Echart",
+        meta: { title: "双柱图标", show: true },
+        component: () => import("@/views/Echart.vue"),
+      },
+      {
+        path: "step",
+        name: "StepList",
+        meta: { title: "步骤条封装", show: true },
+        component: () => import("@/views/StepList.vue"),
+      },
+    ],
   },
-  {
-    path: "/about",
-    name: "About",
-    meta: { title: "关于", show: true },
-    component: () => import("@/views/About.vue"),
-  },
-  {
-    path: "/echart",
-    name: "Echart",
-    meta: { title: "双柱图标", show: true },
-    component: () => import("@/views/Echart.vue"),
-  },
-  {
-    path: "/step",
-    name: "StepList",
-    meta: { title: "步骤条封装", show: true },
-    component: () => import("@/views/StepList.vue"),
-  },
+
   {
     path: "/:path(.*)*",
     component: () => import("@/views/exception/404/index.vue"),
