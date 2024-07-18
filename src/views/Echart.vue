@@ -1,5 +1,5 @@
 <template>
-	<div class="echart">
+	<div class="s-body echart">
 		<SEchart :option="option" />
 	</div>
 </template>
@@ -14,6 +14,8 @@ const option = {
 		xAxisIndex: [0], // 控制X轴
 		startValue: 0,
 		endValue: 6,
+		minSpan: 70,
+		maxSpan: 100,
 		disabled: false
 	},
 	tooltip: {
@@ -50,7 +52,7 @@ const option = {
 	xAxis: [
 		{
 			type: "category",
-			data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+			data: ["部门1", "部门2", "部门3", "部门4", "部门5", "部门6", "部门7"]
 		}
 	],
 	yAxis: [

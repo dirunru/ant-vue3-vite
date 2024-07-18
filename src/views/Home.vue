@@ -3,7 +3,7 @@
 		<a-card bordered class="box-content">
 			<a-space>
 				<template v-for="item in routerList" :key="item.name">
-					<a-button>{{ item?.meta?.title }}</a-button>
+					<a-button @click="goPage(item)">{{ item?.meta?.title }}</a-button>
 				</template>
 			</a-space>
 		</a-card>
@@ -12,14 +12,13 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
-const { options } = useRouter();
+const { push, options } = useRouter();
 const routerList = options?.routes?.filter((item) => item.meta?.show);
+
+const goPage = (item) => {
+	push({ name: item.name });
+};
 </script>
-
-
-
-
-
 <style lang="less" scoped>
 .box-content {
 	width: 100%;
