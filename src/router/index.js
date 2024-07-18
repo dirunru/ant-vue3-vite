@@ -12,12 +12,20 @@ const routes = [
   {
     path: "/about",
     name: "About",
+    meta: { title: "关于", show: true },
     component: () => import("@/views/About.vue"),
   },
   {
     path: "/echart",
     name: "Echart",
+    meta: { title: "双柱图标", show: true },
     component: () => import("@/views/Echart.vue"),
+  },
+  {
+    path: "/step",
+    name: "StepList",
+    meta: { title: "步骤条封装", show: true },
+    component: () => import("@/views/StepList.vue"),
   },
   {
     path: "/:path(.*)*",

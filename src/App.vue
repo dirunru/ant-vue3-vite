@@ -9,9 +9,7 @@
 			}
 		}"
 	>
-		<div id="app">
-			<router-view />
-		</div>
+		<router-view />
 	</a-config-provider>
 </template>
 <style scoped>

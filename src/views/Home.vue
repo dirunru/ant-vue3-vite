@@ -1,37 +1,29 @@
+<template>
+	<div class="s-body">
+		<a-card bordered class="box-content">
+			<a-space>
+				<template v-for="item in routerList" :key="item.name">
+					<a-button>{{ item?.meta?.title }}</a-button>
+				</template>
+			</a-space>
+		</a-card>
+	</div>
+</template>
 <script setup>
 import { reactive, ref } from "vue";
-import { theme } from "ant-design-vue";
-const { useToken } = theme;
-const { token } = useToken();
-defineProps({
-	msg: String
-});
-const homepage = reactive({
-	title: "首页",
-	content: "首页内容"
-});
-const count = ref(0);
+import { useRouter } from "vue-router";
+const { options } = useRouter();
+const routerList = options?.routes?.filter((item) => item.meta?.show);
 </script>
 
 
-<template>
-	<h1>{{ msg }}</h1>
-	<a-space wrap>
-		<a-button type="primary">Primary Button</a-button>
-		<a-button>Default Button</a-button>
-		<a-button type="dashed">Dashed Button</a-button>
-		<a-button type="text">Text Button</a-button>
-		<a-button type="link">Link Button</a-button>
-		<div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div>
-	</a-space>
-</template>
 
 
-<style scoped>
-.circle {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
+
+<style lang="less" scoped>
+.box-content {
+	width: 100%;
+	height: 100%;
 }
 </style>
 
