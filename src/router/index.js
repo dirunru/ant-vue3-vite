@@ -15,6 +15,11 @@ const routes = [
     component: () => import("@/views/About.vue"),
   },
   {
+    path: "/echart",
+    name: "Echart",
+    component: () => import("@/views/Echart.vue"),
+  },
+  {
     path: "/:path(.*)*",
     component: () => import("@/views/exception/404/index.vue"),
   },
