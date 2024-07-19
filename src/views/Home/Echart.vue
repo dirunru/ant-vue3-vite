@@ -107,3 +107,9 @@ const option = {
 	height: 300px;
 }
 </style>
+<script>
+// 静态元数据
+export const meta = {
+	title: "双柱图标"
+};
+</script>

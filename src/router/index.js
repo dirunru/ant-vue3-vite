@@ -1,39 +1,83 @@
 // 引入Vue和VueRouter
 import { createRouter, createWebHistory } from "vue-router";
 
+// 动态导入组件并返回其 meta
+async function getComponentMeta(path) {
+  const module = await import(path);
+  if (module.meta) {
+    return module.meta;
+  }
+  return null;
+}
+const routeFun = async (parentNames) => {
+  const toComponents = async (modules, parentName) => {
+    let routes = [];
+    for (const path of Object.keys(modules)) {
+      // path 是类似 "/src/views/Home/HomePage.vue" 的字符串
+      // 我们需要从中提取出组件名或路由名
+      // prettier-ignore
+      const componentName = path.split("/").pop().replace(/\.\w+$/, "");
+      if (componentName !== "index") {
+        const meta = await getComponentMeta(path);
+        routes.push({
+          path: `${componentName.toLowerCase()}`,
+          name: componentName,
+          meta: {
+            title: meta?.title,
+            show: true,
+          },
+          component: () => import(`@/views/${parentName}/${componentName}.vue`),
+        });
+      }
+    }
+    return routes;
+  };
+  let routeArray = [];
+  const promises = [];
+  for (const item of parentNames) {
+    let promise;
+    if (item === "Home") {
+      promise = toComponents(import.meta.glob("../views/Home/*.vue"), item);
+      routeArray.push({
+        path: "",
+        name: "HomeDefault",
+        redirect: "/home/about",
+      });
+    } else if (item === "Layout") {
+      promise = toComponents(import.meta.glob("../views/Layout/*.vue"), item);
+      routeArray.push({
+        path: "",
+        name: "LayoutDefault",
+        redirect: "/layout/about",
+      });
+    }
+
+    if (promise) {
+      promises.push(promise.then((arr) => routeArray.push(...arr)));
+    }
+  }
+  await Promise.all(promises); // 等待所有异步操作完成
+  return routeArray;
+};
+
+let homeChildrenCom = await routeFun(["Home"]);
+let layoutChildrenCom = await routeFun(["Layout"]);
 // 定义路由
 // 每个路由应该映射一个组件。这里，我们使用'path'来定义URL路径，'component'来定义对应的组件
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
-    component: () => import("@/views/Home.vue"),
-    children: [
-      {
-        path: "", // 空字符串表示根路径下的默认子路由
-        redirect: "about",
-      },
-      {
-        path: "about", // 空字符串表示根路径下的默认子路由
-        name: "About",
-        meta: { title: "获取全局主题", show: true },
-        component: () => import("@/views/About.vue"),
-      },
-      {
-        path: "echart",
-        name: "Echart",
-        meta: { title: "双柱图标", show: true },
-        component: () => import("@/views/Echart.vue"),
-      },
-      {
-        path: "step",
-        name: "StepList",
-        meta: { title: "步骤条封装", show: true },
-        component: () => import("@/views/StepList.vue"),
-      },
-    ],
+    alias: "/",
+    component: () => import("@/views/Home/index.vue"),
+    children: [...homeChildrenCom],
   },
-
+  {
+    path: "/layout",
+    name: "Layout",
+    component: () => import("@/views/Layout/index.vue"),
+    children: [...layoutChildrenCom],
+  },
   {
     path: "/:path(.*)*",
     component: () => import("@/views/exception/404/index.vue"),

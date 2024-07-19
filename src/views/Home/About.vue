@@ -26,4 +26,9 @@ const count = ref(0);
 	border-radius: 50%;
 }
 </style>
-
+<script>
+// 静态元数据
+export const meta = {
+	title: "关于"
+};
+</script>

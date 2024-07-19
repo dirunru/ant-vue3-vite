@@ -19,7 +19,6 @@ const { push, options } = useRouter();
 const routerList = options.routes
 	.find((item) => item.name === "Home")
 	?.children.filter((item) => item.meta?.show);
-
 const goPage = (item) => {
 	push({ name: item.name });
 };
@@ -34,4 +33,3 @@ const goPage = (item) => {
 	}
 }
 </style>
-

@@ -25,3 +25,10 @@ const next = () => {
 </script>
 <style lang='less' scoped>
 </style>
+
+<script>
+// 静态元数据
+export const meta = {
+	title: "步骤条"
+};
+</script>
