@@ -6,16 +6,25 @@ const { token } = useToken();
 defineProps({
 	msg: String
 });
-
+const fetchData = async () => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve("111");
+		}, 1000);
+	});
+};
+const data = await fetchData();
 const count = ref(0);
 </script>
 
 
 <template>
-	<h1>{{ msg }}</h1>
-	<a-space wrap>
-		<div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div>
-	</a-space>
+	<div class="s-body">
+		<h1>{{ msg }}</h1>
+		<a-space wrap>
+			<div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div>
+		</a-space>
+	</div>
 </template>
 
 

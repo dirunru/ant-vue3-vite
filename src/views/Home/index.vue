@@ -8,7 +8,20 @@
 					</template>
 				</a-space>
 			</div>
-			<router-view />
+			<RouterView v-slot="{ Component }">
+				<template v-if="Component">
+					<Transition mode="out-in" appear>
+						<KeepAlive>
+							<Suspense>
+								<!-- 主要内容 -->
+								<component :is="Component"></component>
+								<!-- 加载中状态 -->
+								<template #fallback> 正在加载... </template>
+							</Suspense>
+						</KeepAlive>
+					</Transition>
+				</template>
+			</RouterView>
 		</a-card>
 	</div>
 </template>
@@ -16,9 +29,7 @@
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 const { push, options } = useRouter();
-const routerList = options.routes
-	.find((item) => item.name === "Home")
-	?.children.filter((item) => item.meta?.show);
+const routerList = options.routes.find((item) => item.name === "Home")?.children.filter((item) => item.meta?.show);
 const goPage = (item) => {
 	push({ name: item.name });
 };
