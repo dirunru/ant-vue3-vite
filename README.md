@@ -3,6 +3,7 @@
 
 ### 插件
 ```
+  配置行的配置项目：npm | pnpm | yarn create vue@latest 
   npm install ant-design-vue@4.x --save
   npm install @ant-design/icons-vue --save
   npm install unplugin-vue-components -D // 自动按需引入组件
