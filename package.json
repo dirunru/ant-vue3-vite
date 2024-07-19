@@ -20,6 +20,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
+    "eslint": "^9.7.0",
+    "eslint-plugin-vue": "^9.27.0",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
     "unplugin-auto-import": "^0.18.0",
