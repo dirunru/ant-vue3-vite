@@ -1,21 +1,23 @@
-
-
 <template>
-	<a-space wrap>
-		<!-- <a-button type="primary">Primary Button</a-button>
-		<a-button>Default Button</a-button>
-		<a-button type="dashed">Dashed Button</a-button>
-		<a-button type="text">Text Button</a-button>
-		<a-button type="link">Link Button</a-button>
-		<div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div> -->
-		<button @click="show = !show">Toggle</button>
-		<button @click="goPage('About')">关于</button>
-		<button @click="goPage('Store')">状态管理</button>
-		<button @click="goPage('User')">用户列表</button>
-	</a-space>
-	<Transition>
-		<p v-if="show">{{ homePage.content }}</p>
-	</Transition>
+	<div class="s-body">
+		<a-card :bordered="false" style="width: 100%">
+			<a-space wrap>
+				<!-- <a-button type="primary">Primary Button</a-button>
+			<a-button>Default Button</a-button>
+			<a-button type="dashed">Dashed Button</a-button>
+			<a-button type="text">Text Button</a-button>
+			<a-button type="link">Link Button</a-button>
+			<div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div> -->
+				<button @click="show = !show">Toggle</button>
+				<button @click="goPage('About')">关于</button>
+				<button @click="goPage('Store')">状态管理</button>
+				<button @click="goPage('User')">用户列表</button>
+			</a-space>
+			<Transition>
+				<p v-if="show">{{ homePage.content }}</p>
+			</Transition>
+		</a-card>
+	</div>
 </template>
 <script setup>
 import { reactive, ref } from "vue";
@@ -42,7 +44,6 @@ let homePage = reactive({
 	count: 0
 });
 </script>
-
 
 <style scoped>
 .circle {
@@ -71,4 +72,3 @@ let homePage = reactive({
 	transform: translateX(30px);
 }
 </style>
-

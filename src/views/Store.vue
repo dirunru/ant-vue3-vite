@@ -1,13 +1,15 @@
 <template>
-	<div>
-		<!-- 直接从 store 中访问 state -->
-		<div>Current Count: {{ counter.count }}</div>
-		<div>Current Count Getter: {{ counter.double }}</div>
-		<a-button @click="counter.increment">方法</a-button>
-		<a-button @click="counter.$reset()">重置</a-button>
-		<a-divider style="height: 1px; background-color: #7cb305" />
-		<div>Current Count 2: {{ counter1.count }}</div>
-		<a-button @click="counter1.increment">方法2</a-button>
+	<div class="s-body">
+		<a-card :bordered="false" style="width: 100%">
+			<!-- 直接从 store 中访问 state -->
+			<div>Current Count: {{ counter.count }}</div>
+			<div>Current Count Getter: {{ counter.double }}</div>
+			<a-button @click="counter.increment">方法</a-button>
+			<a-button @click="counter.$reset()">重置</a-button>
+			<a-divider style="height: 1px; background-color: #7cb305" />
+			<div>Current Count 2: {{ counter1.count }}</div>
+			<a-button @click="counter1.increment">方法2</a-button>
+		</a-card>
 	</div>
 </template>
 

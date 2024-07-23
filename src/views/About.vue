@@ -1,31 +1,35 @@
 
 <template>
-	<a-space wrap>
-		<!-- <div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div> -->
-		<!-- props传参 -->
-		<SCard :msg="'提交成功'" :propG="'success'" is-success>
-			<template #header>
-				<h1>Head插槽</h1>
-			</template>
-			<template #default>
-				<h2>默认插槽</h2>
-			</template>
-			<!--  v-slot="slotProps" slotProps其实是所有的子组件的props-->
-			<!-- 具名作用域插槽 完整写法v-slot:item="slotProps" -->
-			<template #item="{ item, username }">
-				<div>{{ item.name }} - {{ username }}</div>
-			</template>
-			<template #footer>
-				<p>Footer插槽</p>
-			</template>
-			<!-- 动态插槽完整写法 -->
-			<!-- <template v-slot:[dynamicSlotName]>  </template> -->
-			<!-- 缩写为 -->
-			<template #[dynamicSlotName]>动态插槽</template>
-		</SCard>
-		<!-- v-modal父子组件传参 -->
-		<Child v-model="countModel" />
-	</a-space>
+	<div class="s-body">
+		<a-card :bordered="false" style="width: 100%">
+			<a-space wrap>
+				<!-- <div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div> -->
+				<!-- props传参 -->
+				<SCard :msg="'提交成功'" :propG="'success'" is-success>
+					<template #header>
+						<h1>Head插槽</h1>
+					</template>
+					<template #default>
+						<h2>默认插槽</h2>
+					</template>
+					<!--  v-slot="slotProps" slotProps其实是所有的子组件的props-->
+					<!-- 具名作用域插槽 完整写法v-slot:item="slotProps" -->
+					<template #item="{ item, username }">
+						<div>{{ item.name }} - {{ username }}</div>
+					</template>
+					<template #footer>
+						<p>Footer插槽</p>
+					</template>
+					<!-- 动态插槽完整写法 -->
+					<!-- <template v-slot:[dynamicSlotName]>  </template> -->
+					<!-- 缩写为 -->
+					<template #[dynamicSlotName]>动态插槽</template>
+				</SCard>
+				<!-- v-modal父子组件传参 -->
+				<Child v-model="countModel" />
+			</a-space>
+		</a-card>
+	</div>
 </template>
 
 <script setup>
