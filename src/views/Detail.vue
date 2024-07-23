@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="s-body">
 		<a-card title="用户详情" :bordered="false" style="width: 100%">
 			{{ $route.params.id }}
 		</a-card>

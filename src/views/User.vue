@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="s-body">
 		<a-card title="用户管理" :bordered="false" style="width: 100%">
 			<a-table :columns="columns" :data-source="data" bordered>
 				<template #name="{ name }">
