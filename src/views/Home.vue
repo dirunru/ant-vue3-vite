@@ -11,6 +11,7 @@
 		<button @click="show = !show">Toggle</button>
 		<button @click="goPage('About')">关于</button>
 		<button @click="goPage('Store')">状态管理</button>
+		<button @click="goPage('User')">用户列表</button>
 	</a-space>
 	<Transition>
 		<p v-if="show">{{ homePage.content }}</p>
