@@ -9,6 +9,7 @@ async function getComponentMeta(path) {
   }
   return null;
 }
+// 获取文件夹下的文件列表，然后拼成路由对象
 const routeFun = async (parentNames) => {
   const toComponents = async (modules, parentName) => {
     let routes = [];
@@ -59,7 +60,6 @@ const routeFun = async (parentNames) => {
   await Promise.all(promises); // 等待所有异步操作完成
   return routeArray;
 };
-
 let homeChildrenCom = await routeFun(["Home"]);
 let layoutChildrenCom = await routeFun(["Layout"]);
 // 定义路由
