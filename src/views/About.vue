@@ -28,6 +28,7 @@
 				<!-- v-modal父子组件传参 -->
 				<Child v-model="countModel" />
 			</a-space>
+      <router-view />
 		</a-card>
 	</div>
 </template>

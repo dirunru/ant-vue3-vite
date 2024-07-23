@@ -13,6 +13,18 @@ const routes = [
     path: "/about",
     name: "About",
     component: () => import("@/views/About.vue"),
+    children: [
+      {
+        path: "",
+        name: "About1",
+        component: () => import("@/views/About1.vue"),
+      },
+      {
+        path: "about2",
+        name: "About2",
+        component: () => import("@/views/About2.vue"),
+      },
+    ],
   },
   {
     path: "/store",
@@ -27,7 +39,7 @@ const routes = [
   {
     // /:id(\\d+) -> 仅匹配数字
     // *（0 个或多个）和 +（1 个或多个）
-    // /:chapters+ ->  匹配 /one, /one/two, /one/two/three, 等 
+    // /:chapters+ ->  匹配 /one, /one/two, /one/two/three, 等
     // /:chapters* -> 匹配 /, /one, /one/two, /one/two/three, 等
     path: "/users/detail/:id",
     name: "Detail",
