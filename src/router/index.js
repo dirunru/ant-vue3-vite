@@ -1,8 +1,8 @@
 // 引入Vue和VueRouter
+// 路由器实例：createRouter
 import { createRouter, createWebHistory } from "vue-router";
 
-// 定义路由
-// 每个路由应该映射一个组件。这里，我们使用'path'来定义URL路径，'component'来定义对应的组件
+// 定义路由：把每个路由URL路径映射到组件。我们使用'path'来定义URL路径，'component'来定义对应的组件
 const routes = [
   {
     path: "/",
@@ -13,6 +13,11 @@ const routes = [
     path: "/about",
     name: "About",
     component: () => import("@/views/About.vue"),
+  },
+  {
+    path: "/store",
+    name: "Store",
+    component: () => import("@/views/Store.vue"),
   },
   {
     path: "/:path(.*)*",

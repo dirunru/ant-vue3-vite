@@ -9,6 +9,8 @@
 		<a-button type="link">Link Button</a-button>
 		<div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div> -->
 		<button @click="show = !show">Toggle</button>
+		<button @click="goPage('About')">关于</button>
+		<button @click="goPage('Store')">状态管理</button>
 	</a-space>
 	<Transition>
 		<p v-if="show">{{ homePage.content }}</p>
@@ -17,6 +19,16 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { theme } from "ant-design-vue";
+import { useRoute, useRouter } from "vue-router";
+
+const router = useRouter();
+const route = useRoute();
+
+const goPage = (name) => {
+	router.push({
+		name: name
+	});
+};
 const { useToken } = theme;
 const { token } = useToken();
 defineProps({
