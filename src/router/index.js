@@ -51,7 +51,6 @@ const routeFun = async (parentNames) => {
   await Promise.all(promises); // 等待所有异步操作完成
   return routeArray;
 };
-
 let homeChildrenCom = await routeFun(["Home"]);
 // console.log("homeChildrenCom", homeChildrenCom);
 let layoutChildrenCom = await routeFun(["Layout"]);
