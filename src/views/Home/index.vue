@@ -29,6 +29,7 @@
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 const { push, options } = useRouter();
+console.log("options", options);
 const routerList = options.routes.find((item) => item.name === "Home")?.children.filter((item) => item.meta?.show);
 const goPage = (item) => {
 	push({ name: item.name });

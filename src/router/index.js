@@ -9,6 +9,7 @@ async function getComponentMeta(path) {
   }
   return null;
 }
+// 获取文件夹下的文件列表，然后拼成路由对象
 const routeFun = async (parentNames) => {
   const toComponents = async (modules, parentName) => {
     let routes = [];
@@ -17,11 +18,13 @@ const routeFun = async (parentNames) => {
       // 我们需要从中提取出组件名或路由名
       // prettier-ignore
       const componentName = path.split("/").pop().replace(/\.\w+$/, "");
+      // console.log("componentName", componentName);
       if (componentName !== "index") {
         const meta = await getComponentMeta(path);
+        // prettier-ignore
         routes.push({
-          path: `${componentName.toLowerCase()}`,
-          name: componentName,
+          path: componentName === "DefaultHome" ? "" : `${componentName.toLowerCase()}`,
+          name: `${componentName === "DefaultHome" ? parentName : ''}${componentName}`,
           meta: {
             title: meta?.title,
             show: true,
@@ -38,20 +41,9 @@ const routeFun = async (parentNames) => {
     let promise;
     if (item === "Home") {
       promise = toComponents(import.meta.glob("../views/Home/*.vue"), item);
-      routeArray.push({
-        path: "",
-        name: "HomeDefault",
-        redirect: "/home/about",
-      });
     } else if (item === "Layout") {
       promise = toComponents(import.meta.glob("../views/Layout/*.vue"), item);
-      routeArray.push({
-        path: "",
-        name: "LayoutDefault",
-        redirect: "/layout/about",
-      });
     }
-
     if (promise) {
       promises.push(promise.then((arr) => routeArray.push(...arr)));
     }
@@ -61,6 +53,7 @@ const routeFun = async (parentNames) => {
 };
 
 let homeChildrenCom = await routeFun(["Home"]);
+// console.log("homeChildrenCom", homeChildrenCom);
 let layoutChildrenCom = await routeFun(["Layout"]);
 // 定义路由
 // 每个路由应该映射一个组件。这里，我们使用'path'来定义URL路径，'component'来定义对应的组件
