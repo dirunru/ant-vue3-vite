@@ -22,6 +22,17 @@ import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
 const route = useRoute();
+// console.log("route", route);
+// {
+//   "path": "/users",
+//   "name": "User",
+//   "params": {},
+//   "query": {},
+//   "hash": "",
+//   "fullPath": "/users",
+//   "matched": [],
+//   "meta": {}
+// }
 const columns = [
 	{
 		title: "姓名",

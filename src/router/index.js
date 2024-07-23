@@ -25,6 +25,10 @@ const routes = [
     component: () => import("@/views/User.vue"),
   },
   {
+    // /:id(\\d+) -> 仅匹配数字
+    // *（0 个或多个）和 +（1 个或多个）
+    // /:chapters+ ->  匹配 /one, /one/two, /one/two/three, 等 
+    // /:chapters* -> 匹配 /, /one, /one/two, /one/two/three, 等
     path: "/users/detail/:id",
     name: "Detail",
     component: () => import("@/views/Detail.vue"),
