@@ -29,7 +29,12 @@ const routes = [
   {
     path: "/store",
     name: "Store",
-    component: () => import("@/views/Store.vue"),
+    // component: () => import("@/views/Store.vue"),
+    components: {
+      default: () => import("@/views/Store.vue"),
+      // helper: helper 的缩写它们与 `<router-view>` 上的 `name` 属性匹配
+      helper: () => import("@/views/Helper.vue"),
+    },
   },
   {
     path: "/users",
