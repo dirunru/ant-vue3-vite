@@ -16,7 +16,8 @@ const headerStyle = {
 	height: "60px",
 	paddingInline: 50,
 	lineHeight: "64px",
-	backgroundColor: "#fff"
+	// backgroundColor: "#fff",
+	backgroundColor: "#ccc"
 };
 const contentStyle = {
 	textAlign: "center",
@@ -24,8 +25,9 @@ const contentStyle = {
 };
 const footerStyle = {
 	textAlign: "center",
-	backgroundColor: "#fff",
-	height: "50px"
+	// backgroundColor: "#fff",
+	height: "50px",
+	backgroundColor: "#ccc"
 };
 </script>
 <style lang='less' scoped>

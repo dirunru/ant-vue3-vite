@@ -1,5 +1,5 @@
 <template>
-	<div class="s-body">test.vue</div>
+	<div>test.vue</div>
 </template>
 
 <script setup>
