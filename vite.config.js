@@ -27,13 +27,14 @@ export default defineConfig({
       },
     },
   },
+  // build: {
+  //   outDir: "dist",
+  //   assetsDir: "assets",
+  //   cssCodeSplit: true,
+  //   sourcemap: false,
+  // },
   build: {
-    outDir: "dist",
-    assetsDir: "assets",
-    cssCodeSplit: true,
-    sourcemap: false,
-  },
-  build: {
+    target: "es2022", // 或更高版本，根据你的需求选择
     minify: false,
     // 进行压缩计算
     brotliSize: false,
