@@ -22,7 +22,7 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { theme } from "ant-design-vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter, onBeforeRouteLeave } from "vue-router";
 const { useToken } = theme;
 const { token } = useToken();
 
@@ -34,7 +34,11 @@ const goPage = (name) => {
 		name: name
 	});
 };
-
+// 组合式api不支持beforeRouteEnter了，因为它需要访问即将被创建的组件实例与组合式 API 的设计理念不完全吻合，可以用其他的代替
+// onBeforeRouteLeave((to, from, next) => {
+// 	console.log("to, from", to, from);
+// 	next(); // 确保调用 next()
+// });
 defineProps({
 	msg: String
 });
