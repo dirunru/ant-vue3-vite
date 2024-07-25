@@ -36,6 +36,9 @@ importers:
         specifier: '4'
         version: 4.4.0(vue@3.4.31(typescript@5.5.4))
     devDependencies:
+      '@types/node':
+        specifier: ^20.14.12
+        version: 20.14.12
       '@vitejs/plugin-vue':
         specifier: ^5.0.5
         version: 5.0.5(vite@5.3.3(@types/node@20.14.12)(less@4.2.0)(terser@5.31.3))(vue@3.4.31(typescript@5.5.4))

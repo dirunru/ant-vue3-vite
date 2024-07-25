@@ -13,8 +13,8 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env",
-      "ant-design-vue/global"
+      "node",
+      "ant-design-vue"
     ],
     "paths": {  
       "@/*": ["src/*"],
@@ -34,6 +34,7 @@
     "tests/**/*.ts",
     "tests/**/*.tsx", "src/mock/user.js", "src/pinia/dicData.js", "src/common/formConfig.js",
   ],
+  
   "exclude": [
     "node_modules"
   ]

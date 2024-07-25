@@ -1,4 +1,4 @@
-import requests from '@utils/mockReques'
+import requests from '@/utils/mockReques'
 import '@/mock/user'
 
 export const reqGetBannerList = (data:Object) => {

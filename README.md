@@ -18,7 +18,13 @@
   npm install echarts --save // 图表
   npm install mockjs --save-dev // mock
   npm install corejs // 兼容
+  npm install eslint eslint-plugin-vue --save-dev  // eslint
   npm install typescript --save-dev // ts
   npm install @vue/cli-plugin-typescript --save-dev // ts
-  npm install eslint eslint-plugin-vue --save-dev 
+  npm install --save-dev @types/node // ts
+
+  <!-- 删除node_modules 和 package-lock.json -->
+  rm -rf node_modules  
+  rm package-lock.json 
+  npm install
 ```
