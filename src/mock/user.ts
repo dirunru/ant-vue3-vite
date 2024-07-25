@@ -19,6 +19,24 @@ import Mock from 'mockjs';
 //     ],
 //   },
 // }
+
+Mock.mock('/mock/class/page', 'post', (option: any) => {
+  let info = JSON.parse(option.body)
+  let dataList = Mock.mock({
+    'courses|10': [{  
+        'id|+1': 1,  
+        'name': '@cname', // 使用Mock.js提供的随机中文名  
+        'time': '@datetime("HH:mm")', // 使用Mock.js提供的随机时间  
+        'teacher': '@cname',  
+        'classroom': '@pick(["教室A", "教室B", "教室C", "教室D"])'  
+    }] 
+  })
+  return {
+    code: 200,
+    message: 'success',
+    data: dataList.courses
+  }
+})
 Mock.mock('/mock/banner', 'post', (option: any) => {
   let info = JSON.parse(option.body)
   let dataList  =  Mock.mock({

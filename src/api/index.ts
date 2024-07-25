@@ -12,23 +12,12 @@ export const reqGetBannerList = (data:Object) => {
     })
   })
 }
-export const reqGetFruitList = (data:Object) => {
+export const reqGetClassList = (data:Object) => {
   return new Promise((resolve, reject) => {
     requests.service({
-      url: '/fruits',
+      url: '/class/page',
       method: 'post',
       data
-    }).then((res:any) => {
-      resolve(res.data)
-    })
-  })
-}
-
-export const getDicData = (key:String) =>{
-  return new Promise((resolve, reject) => {
-    requests.service({
-      url: `/${key}`,
-      method: 'post',
     }).then((res:any) => {
       resolve(res)
     })
