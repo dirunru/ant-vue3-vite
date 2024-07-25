@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import { theme } from "ant-design-vue";
+// 请求接口实例
+import { reqGetBannerList } from "@/api";
 const { useToken } = theme;
 const { token } = useToken();
 defineProps({
@@ -13,6 +15,13 @@ const fetchData = async () => {
 		}, 1000);
 	});
 };
+
+const getList = reqGetBannerList({
+	pageIndex: 1,
+	pageSize: 20
+}).then((res) => {
+	console.log("res---table", res);
+});
 const data = await fetchData();
 const count = ref(0);
 </script>

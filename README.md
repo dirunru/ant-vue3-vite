@@ -11,10 +11,20 @@
   npm install pinia // 状态管理
   npm install dayjs --save // 日期处理
   npm install vue-router@4 // 路由 
+  npm install @vue/cli-plugin-router --save-dev // 路由
   npm install unplugin-auto-import --save-dev // 自动按需引入方法
   npm install postcss-px-to-viewport-8-with-include --save-dev // px转rpx
   npm install axios // 请求
   npm install echarts --save // 图表
+  npm install mockjs --save-dev // mock
+  npm install corejs // 兼容
+  npm install eslint eslint-plugin-vue --save-dev  // eslint
+  npm install typescript --save-dev // ts
+  npm install @vue/cli-plugin-typescript --save-dev // ts
+  npm install --save-dev @types/node // ts
 
-  npm install eslint eslint-plugin-vue --save-dev 
+  <!-- 删除node_modules 和 package-lock.json -->
+  rm -rf node_modules  
+  rm package-lock.json 
+  npm install
 ```
