@@ -15,6 +15,6 @@
   npm install postcss-px-to-viewport-8-with-include --save-dev // px转rpx
   npm install axios // 请求
   npm install echarts --save // 图表
-
+  npm install mockjs --save-dev // mock
   npm install eslint eslint-plugin-vue --save-dev 
 ```

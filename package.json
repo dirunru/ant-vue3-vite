@@ -25,6 +25,7 @@
     "eslint-plugin-vue": "^9.27.0",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
+    "mockjs": "^1.1.0",
     "unplugin-auto-import": "^0.18.0",
     "unplugin-vue-components": "^0.27.2",
     "vite": "^5.3.1"
