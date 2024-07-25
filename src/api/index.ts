@@ -8,7 +8,7 @@ export const reqGetBannerList = (data:Object) => {
       method: 'post',
       data
     }).then((res:any) => {
-      resolve(res.data)
+      resolve(res)
     })
   })
 }
