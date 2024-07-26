@@ -11,7 +11,7 @@ export default defineConfig({
       "@/": resolve(__dirname, "src") + "/",
       "@assets/": resolve(__dirname, "assets") + "/",
       "@utils/": resolve(__dirname, "utils") + "/",
-      components: "src/components", // 为components目录设置别名
+      "@components/": resolve(__dirname, "components") + "/",
     },
   },
   server: {
