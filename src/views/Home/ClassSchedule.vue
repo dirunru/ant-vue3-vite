@@ -164,6 +164,6 @@ const handleDrop = (e, item, index) => {
 <script>
 // 静态元数据
 export const meta = {
-	title: "课程表"
+	title: "课程表-拖拽"
 };
 </script>
