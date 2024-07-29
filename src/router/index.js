@@ -16,12 +16,10 @@ const routeFun = async (parentNames) => {
     for (const path of Object.keys(modules)) {
       // path 是类似 "/src/views/Home/HomePage.vue" 的字符串
       // 我们需要从中提取出组件名或路由名
-      // prettier-ignore
       const componentName = path.split("/").pop().replace(/\.\w+$/, "");
       // console.log("componentName", componentName);
       if (componentName !== "index") {
         const meta = await getComponentMeta(path);
-        // prettier-ignore
         routes.push({
           path: componentName === "DefaultHome" ? "" : `${componentName.toLowerCase()}`,
           name: `${componentName === "DefaultHome" ? parentName : ''}${componentName}`,

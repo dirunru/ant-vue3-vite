@@ -8,7 +8,6 @@ export function useScrollPositionListener(tableRef, page) {
   // console.log('tableRef, page', tableRef, page);
   const scrollPosition = ref(0);
   onDeactivated(() => {
-    // prettier-ignore
     scrollPosition.value = tableRef.value.$el.querySelector('.ant-table-body').scrollTop;
     let obj = {};
     obj[page] = scrollPosition.value;
@@ -19,7 +18,6 @@ export function useScrollPositionListener(tableRef, page) {
     if (params) {
       scrollPosition.value = params[page];
       if (scrollPosition.value > 0) {
-        // prettier-ignore
         tableRef.value.$el.querySelector('.ant-table-body').scrollTop = scrollPosition.value;
       }
     }
