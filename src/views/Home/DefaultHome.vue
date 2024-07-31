@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { theme } from "ant-design-vue";
+import TransferTree from "@/components/TransferTree.vue";
 // 请求接口实例
 import { reqGetBannerList } from "@/api";
 const { useToken } = theme;
@@ -24,6 +25,7 @@ const getList = reqGetBannerList({
 });
 const data = await fetchData();
 const count = ref(0);
+const showAuth = ref(false);
 </script>
 
 
@@ -32,7 +34,9 @@ const count = ref(0);
 		<h1>{{ msg }}</h1>
 		<a-space wrap>
 			<div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div>
+      <a-button @click="showAuth = true">树穿梭框</a-button>
 		</a-space>
+    <TransferTree v-model:visible="showAuth"></TransferTree>
 	</div>
 </template>
 
