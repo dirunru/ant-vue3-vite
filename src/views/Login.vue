@@ -1,11 +1,10 @@
 <template>
-	<div>
-		<h1>登录页面</h1>
-	</div>
+  <div>
+    <h1>登录页面</h1>
+  </div>
 </template>
 
 <script setup>
 import { ref, reactive } from "vue";
 </script>
-<style lang='less' scoped>
-</style>
+<style lang="less" scoped></style>
