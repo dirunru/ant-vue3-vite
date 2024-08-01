@@ -62,6 +62,14 @@ const routes = [
   // 你可以继续定义其他路由...
 ];
 
+// import.meta.glob() 直接引入所有的模块 Vite 独有的功能
+// const modules = import.meta.glob("@/views/*.vue", { eager: true });
+// console.log("modules", modules);
+// // 加入到路由集合中
+// Object.keys(modules).forEach((key) => {
+//   console.log("key", key);
+// });
+
 // 创建router实例，然后传`routes`配置和`history`模式
 const router = createRouter({
   history: createWebHistory(), // 使用HTML5 History模式
