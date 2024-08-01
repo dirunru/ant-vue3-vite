@@ -18,7 +18,7 @@
   npm install echarts --save // 图表
   npm install mockjs --save-dev // mock
   npm install corejs // 兼容
-  npm install eslint eslint-plugin-vue --save-dev  // eslint
+  npm install eslint eslint-plugin-vue eslint-config-prettier eslint-plugin-prettier prettier --save-dev  // eslint
   npm install typescript --save-dev // ts
   npm install @vue/cli-plugin-typescript --save-dev // ts
   npm install --save-dev @types/node // ts
