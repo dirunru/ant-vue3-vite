@@ -1,18 +1,20 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import { SUCCESS_CODE } from '@/common/type'
+const token = localStorage.getItem('token');  
 const config = {
   baseURL: '/mock',
   timeout: 10000,
-  withCredentials: true,
-  headers: {}
+  withCredentials: true, 
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}` // 从本地存储中获取 token 并设置到请求头中 
+  }
 }
-
 class RequestHttp {
   service: AxiosInstance
 
   constructor() {
     this.service = axios.create(config)
-
     /**
      * @description 请求拦截器
      */

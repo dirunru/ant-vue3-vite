@@ -1,6 +1,5 @@
 // 引入Vue和VueRouter
 import { createRouter, createWebHistory } from "vue-router";
-
 // 动态导入组件并返回其 meta
 async function getComponentMeta(path) {
   const module = await import(path);
@@ -64,6 +63,12 @@ const routes = [
     children: [...homeChildrenCom],
   },
   {
+    path: "/login",
+    name: "Login",
+    meta: { title: "登录" },
+    component: () => import("@/views/Home/index.vue"),
+  },
+  {
     path: "/layout",
     name: "Layout",
     component: () => import("@/views/Layout/index.vue"),
@@ -81,6 +86,31 @@ const router = createRouter({
   history: createWebHistory(), // 使用HTML5 History模式
   routes, // （缩写）相当于 routes: routes
 });
-
+router.beforeEach((to, from, next) => {
+  //asyncRoutesMark:是否加载了路由信息，为false则要请求路由接口
+  //isLogin:登录状态
+  let isLoadRouters = false;
+  let isLogin = false;
+  const token = localStorage.getItem("token");
+  if (token && isLogin) {
+    if (isLoadRouters) {
+      //登录成功后不能通过历史箭头返回登录页面
+      if (to.path !== "/login") {
+        next();
+      } else {
+        //如果刚好url变成/login,重置from的path
+        next({ ...from, replace: true });
+      }
+    } else {
+      next({ ...to, replace: true });
+    }
+  } else {
+    if (to.path === "/login" || to.path === "/register") {
+      next();
+    } else {
+      next("/login");
+    }
+  }
+});
 // 导出router，以便在main.js中使用它
 export default router;
