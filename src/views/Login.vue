@@ -1,16 +1,23 @@
 <template>
   <div class="login">
-    <!-- <SLoginForm>
-      <template #title>
-        <div class="title">Login</div>
-      </template>
-    </SLoginForm> -->
-    <SLoginForm />
+    <a-button @click="loginPage = !loginPage">切换</a-button>
+    <template v-if="loginPage">
+      <SLoginForm>
+        <template #title>
+          <h2 class="title">登录</h2>
+        </template>
+      </SLoginForm>
+    </template>
+    <template v-else>
+      <LoginForm />
+    </template>
   </div>
 </template>
 
 <script setup>
-  import SLoginForm from '@/components/SLoginForm2.vue';
+  import SLoginForm from '@/components/SLoginForm.vue';
+  import LoginForm from '@/components/SLoginForm2.vue';
+  const loginPage = ref(true);
 </script>
 <style lang="less" scoped>
   .login {

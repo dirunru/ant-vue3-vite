@@ -22,7 +22,9 @@
   import { ref, reactive, toRaw } from 'vue';
   import type { UnwrapRef } from 'vue';
   import type { Rule } from 'ant-design-vue/es/form';
+  import { useRouter } from 'vue-router';
 
+  const { push } = useRouter();
   interface FormState {
     username: string;
     password: string;
@@ -52,12 +54,17 @@
       }
     ]
   };
+
   const formRef = ref();
   const onSubmit = () => {
     formRef.value
       .validate()
       .then(() => {
         console.log('values', formState, toRaw(formState));
+        localStorage.setItem('token', JSON.stringify(toRaw(formState)));
+        push({
+          name: 'HomeDefaultHome'
+        });
       })
       .catch((error) => {
         console.log('error', error);
@@ -89,7 +96,6 @@
       :deep(.ant-checkbox-wrapper) {
         color: #fff;
       }
-
       :deep(.ant-input),
       :deep(.ant-input-affix-wrapper-focused),
       :deep(.ant-input-affix-wrapper) {
@@ -99,6 +105,8 @@
         border-right: none;
         border-top: none;
         border-radius: 0;
+        box-shadow: none;
+
         .anticon.ant-input-password-icon {
           color: #fff;
         }
