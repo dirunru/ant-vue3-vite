@@ -2,7 +2,7 @@
   <div class="login">
     <a-button @click="loginPage = !loginPage">切换</a-button>
     <template v-if="loginPage">
-      <SLoginForm>
+      <SLoginForm :userInfo="userInfo">
         <template #title>
           <h2 class="title">登录</h2>
         </template>
@@ -18,6 +18,7 @@
   import SLoginForm from '@/components/SLoginForm.vue';
   import LoginForm from '@/components/SLoginForm2.vue';
   const loginPage = ref(true);
+  const userInfo = JSON.parse(localStorage.getItem('token'));
 </script>
 <style lang="less" scoped>
   .login {

@@ -30,7 +30,7 @@
   const showAuth = ref(false);
 
   const loginOut = () => {
-    // console.log('loginOut');
+    console.log('loginOut');
     localStorage.clear();
     push({
       name: 'Login'

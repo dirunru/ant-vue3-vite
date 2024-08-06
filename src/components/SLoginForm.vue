@@ -19,13 +19,19 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, reactive, toRaw } from 'vue';
+  import { ref, reactive, toRaw, defineProps } from 'vue';
   import type { UnwrapRef } from 'vue';
   import type { Rule } from 'ant-design-vue/es/form';
   import { useRouter } from 'vue-router';
-
+  import Cookies from 'js-cookie';
+  import { encrypt, decrypt } from './jsencrypt';
   const { push } = useRouter();
   interface FormState {
+    username: string;
+    password: string;
+    remember: boolean;
+  }
+  interface UserInfo {
     username: string;
     password: string;
     remember: boolean;
@@ -54,14 +60,22 @@
       }
     ]
   };
-
+  const props = defineProps<{
+    userInfo: UserInfo;
+  }>();
   const formRef = ref();
   const onSubmit = () => {
     formRef.value
       .validate()
       .then(() => {
-        console.log('values', formState, toRaw(formState));
         localStorage.setItem('token', JSON.stringify(toRaw(formState)));
+        if (formState.remember) {
+          Cookies.set('username', formState.username, { expires: 30 }); //设置有效期为30天
+          Cookies.set('password', encrypt(formState.password), { expires: 30 });
+        } else {
+          Cookies.remove('username');
+          Cookies.remove('password');
+        }
         push({
           name: 'HomeDefaultHome'
         });
@@ -70,6 +84,13 @@
         console.log('error', error);
       });
   };
+  const getCookie = () => {
+    let username = Cookies.get('username');
+    let password = Cookies.get('password');
+    formState.username = username === undefined ? formState.username : username;
+    formState.password = password === undefined ? formState.password : decrypt(password);
+  };
+  getCookie();
   // 重置表单
   // const resetForm = () => {
   //   formRef.value.resetFields();

@@ -92,28 +92,31 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   //asyncRoutesMark:是否加载了路由信息，为false则要请求路由接口
   //isLogin:登录状态
-  let isLoadRouters = false;
+  let isLoadRouters = true; // 这里应该有一个逻辑来判断路由是否已加载，例如从Vuex或全局变量中
   let isLogin = true;
   const token = localStorage.getItem('token');
   if (token && isLogin) {
+    // 如果已经加载了路由且用户尝试访问登录页面，则重定向到首页（或其他非登录页面)
     if (isLoadRouters) {
-      //登录成功后不能通过历史箭头返回登录页面
-      if (to.path !== '/login') {
-        next();
-      } else {
-        //如果刚好url变成/login,重置from的path
-        next({ ...from, replace: true });
-      }
-    } else {
       if (to.path === '/login') {
         next('/');
+      } else {
+        next(); // 正常导航
       }
-      next();
+    } else {
+      // 如果路由未加载，用户应该不能访问非登录页面 // && to.path !== '/register'注册，没写
+      if (to.path !== '/login') {
+        next('/login'); // 重定向到登录页面
+      } else {
+        next(); // 用户可以访问登录或注册页面
+      }
     }
   } else {
+    // 用户未登录
     if (to.path === '/login' || to.path === '/register') {
-      next();
+      next(); // 用户可以访问登录或注册页面
     } else {
+      // 用户尝试访问非登录页面，重定向到登录页面
       next('/login');
     }
   }

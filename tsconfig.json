@@ -32,6 +32,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
+    "src/**/*.d.ts",
     "tests/**/*.tsx", "src/mock/user.js", "src/pinia/dicData.js", "src/common/formConfig.js",
   ],
   
