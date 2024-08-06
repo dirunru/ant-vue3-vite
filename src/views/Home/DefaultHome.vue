@@ -18,7 +18,7 @@
       }, 1000);
     });
   };
-
+  window.$log.info('测试全局花式打印');
   const getList = reqGetBannerList({
     pageIndex: 1,
     pageSize: 20
