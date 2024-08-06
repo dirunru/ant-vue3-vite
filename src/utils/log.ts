@@ -2,8 +2,13 @@
 // %s - 字符串
 // %d or %i - 整数
 // %f - 浮点数
-// %o - 对象
+// %o - 表示DOM元素 // console.log('%o', document.body)
 // %c - CSS样式
+// %O - 表示javascript对象 // console.log('%O', document.body)
+// console.clear()  // 清空
+// console.debug()  // 打印调试
+// console.time("循环")
+// console.timeEnd("循环")
 
 const prettyLog = () => {
   const isProduction = process.env.NODE_ENV === 'production';
