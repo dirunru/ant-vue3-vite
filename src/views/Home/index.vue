@@ -11,7 +11,7 @@
       <RouterView v-slot="{ Component }">
         <template v-if="Component">
           <Transition mode="out-in" appear>
-            <KeepAlive v-if="$route.meta.keepAlive">
+            <KeepAlive>
               <Suspense>
                 <!-- 主要内容 -->
                 <component :is="Component"></component>
@@ -19,12 +19,6 @@
                 <template #fallback> 正在加载...1 </template>
               </Suspense>
             </KeepAlive>
-            <Suspense v-else>
-              <!-- 主要内容 -->
-              <component :is="Component"></component>
-              <!-- 加载中状态 -->
-              <template #fallback> 正在加载...2 </template>
-            </Suspense>
           </Transition>
         </template>
       </RouterView>

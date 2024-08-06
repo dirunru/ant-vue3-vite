@@ -45,7 +45,7 @@
           });
         }
         resolve(newData);
-      }, 300);
+      }, 1000);
     });
   };
   onMounted(() => {
@@ -56,6 +56,7 @@
 <style lang="less" scoped>
   .container {
     height: 300px;
+    width: 400px;
     overflow-y: auto;
     border: solid 1px red;
   }
