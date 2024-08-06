@@ -20,6 +20,9 @@
   import LoginForm from '@/components/SLoginForm2.vue';
   const loginPage = ref(true);
   const userInfo = JSON.parse(localStorage.getItem('token'));
+  import { ref, reactive } from 'vue';
+
+  window.$log.info('测试全局花式打印');
 </script>
 <style lang="less" scoped>
   .login {
