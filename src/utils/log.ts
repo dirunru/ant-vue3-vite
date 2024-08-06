@@ -1,6 +1,12 @@
 // 美化打印实现方法
+// %s - 字符串
+// %d or %i - 整数
+// %f - 浮点数
+// %o - 对象
+// %c - CSS样式
+
 const prettyLog = () => {
-  const isProduction = import.meta.env.MODE === 'production';
+  const isProduction = process.env.NODE_ENV === 'production';
   const isEmpty = (value: any) => {
     return value == null || value === undefined || value === '';
   };
