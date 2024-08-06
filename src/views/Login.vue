@@ -2,7 +2,8 @@
   <div class="login">
     <a-button @click="loginPage = !loginPage">切换</a-button>
     <template v-if="loginPage">
-      <SLoginForm :userInfo="userInfo">
+      <!--  :userInfo="userInfo" -->
+      <SLoginForm>
         <template #title>
           <h2 class="title">登录</h2>
         </template>

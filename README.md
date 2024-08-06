@@ -25,6 +25,9 @@
   npm install --save-dev js-cookie // Cookie来实现记住密码功能（js-cookie）,使用jsencrypt对密码进行加密解密
   npm install --save-dev jsencrypt // jsencrypt 对密码进行加密解密
   npm i --save-dev @types/js-cookie // ts版本的
+
+
+  
   <!-- 删除node_modules 和 package-lock.json -->
   rm -rf node_modules  
   rm package-lock.json 

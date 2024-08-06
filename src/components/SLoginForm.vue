@@ -31,11 +31,7 @@
     password: string;
     remember: boolean;
   }
-  interface UserInfo {
-    username: string;
-    password: string;
-    remember: boolean;
-  }
+
   const formState: UnwrapRef<FormState> = reactive({
     username: '',
     password: '',
@@ -60,9 +56,14 @@
       }
     ]
   };
-  const props = defineProps<{
-    userInfo: UserInfo;
-  }>();
+  // interface UserInfo {
+  //   username: string;
+  //   password: string;
+  //   remember: boolean;
+  // }
+  // const props = defineProps<{
+  //   userInfo: UserInfo;
+  // }>();
   const formRef = ref();
   const onSubmit = () => {
     formRef.value
@@ -80,7 +81,7 @@
           name: 'HomeDefaultHome'
         });
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.log('error', error);
       });
   };
@@ -89,6 +90,7 @@
     let password = Cookies.get('password');
     formState.username = username === undefined ? formState.username : username;
     formState.password = password === undefined ? formState.password : decrypt(password);
+    console.log('formState.password', formState.password);
   };
   getCookie();
   // 重置表单
