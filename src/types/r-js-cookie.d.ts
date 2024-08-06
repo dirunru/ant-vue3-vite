@@ -1,3 +1,5 @@
+// 备用
+// 如果npm i --save-dev @types/js-cookie 没生效，可能没有找到该类型定义包的时候采用的
 declare module 'js-cookie' {  
   // 假设 js-cookie 有一个 set 和 get 函数  
   export function set(name: string, value: string, options?: Cookies.CookieAttributes): void;  
