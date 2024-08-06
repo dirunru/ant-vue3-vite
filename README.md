@@ -22,6 +22,7 @@
   npm install typescript --save-dev // ts
   npm install @vue/cli-plugin-typescript --save-dev // ts
   npm install --save-dev @types/node // ts
+  npm install --save-dev lodash-es // lodash es6版本
 
   <!-- 删除node_modules 和 package-lock.json -->
   rm -rf node_modules  
