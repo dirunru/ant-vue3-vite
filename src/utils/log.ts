@@ -1,6 +1,6 @@
 // 美化打印实现方法
 const prettyLog = () => {
-  const isProduction = import.meta.env.MODE === 'production';
+  const isProduction = process.env.NODE_ENV === 'production';
   const isEmpty = (value: any) => {
     return value == null || value === undefined || value === '';
   };
