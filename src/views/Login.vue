@@ -6,5 +6,7 @@
 
 <script setup>
   import { ref, reactive } from 'vue';
+
+  window.$log.info('测试全局花式打印');
 </script>
 <style lang="less" scoped></style>
