@@ -27,8 +27,6 @@
     "@vue/cli-plugin-router": "^5.0.8",
     "@vue/cli-plugin-typescript": "^5.0.8",
     "eslint": "^9.7.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.27.0",
     "js-cookie": "^3.0.5",
     "jsencrypt": "^3.3.2",
@@ -36,11 +34,9 @@
     "less-loader": "^12.2.0",
     "lodash-es": "^4.17.21",
     "mockjs": "^1.1.0",
-    "prettier": "^3.3.3",
     "typescript": "^5.5.4",
     "unplugin-auto-import": "^0.18.0",
     "unplugin-vue-components": "^0.27.2",
-    "vite": "^5.3.1",
-    "vue-eslint-parser": "^9.4.3"
+    "vite": "^5.3.1"
   }
 }
