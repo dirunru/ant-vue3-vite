@@ -11,7 +11,7 @@
       <RouterView v-slot="{ Component }">
         <template v-if="Component">
           <Transition mode="out-in" appear>
-            <KeepAlive>
+            <KeepAlive :include="keepAliveArr">
               <Suspense>
                 <!-- 主要内容 -->
                 <component :is="Component"></component>
@@ -31,6 +31,7 @@
   const { push, options } = useRouter();
   console.log('options', options);
   const routerList = options.routes.find((item) => item.name === 'Home')?.children.filter((item) => item.meta?.show);
+  const keepAliveArr = routerList.filter((item) => item.meta?.keepAlive).map((item) => item.name);
   const goPage = (item) => {
     push({ name: item.name });
   };

@@ -26,7 +26,7 @@ const routeFun = async (parentNames) => {
           path: componentName === 'DefaultHome' ? '' : `${componentName.toLowerCase()}`,
           name: `${componentName === 'DefaultHome' ? parentName : ''}${componentName}`,
           meta: {
-            title: meta?.title,
+            ...meta,
             show: true
           },
           component: () => import(`@/views/${parentName}/${componentName}.vue`)
@@ -53,7 +53,7 @@ const routeFun = async (parentNames) => {
 };
 
 let homeChildrenCom = await routeFun(['Home']);
-// console.log("homeChildrenCom", homeChildrenCom);
+// console.log('homeChildrenCom', homeChildrenCom);
 let layoutChildrenCom = await routeFun(['Layout']);
 // 定义路由
 // 每个路由应该映射一个组件。这里，我们使用'path'来定义URL路径，'component'来定义对应的组件
