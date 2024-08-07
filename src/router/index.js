@@ -1,32 +1,22 @@
 // 引入Vue和VueRouter
 import { createRouter, createWebHistory } from 'vue-router';
-// 动态导入组件并返回其 meta
-async function getComponentMeta(path) {
-  const module = await import(path);
-  if (module.meta) {
-    return module.meta;
-  }
-  return null;
-}
 // 获取文件夹下的文件列表，然后拼成路由对象
-const routeFun = async (parentNames) => {
-  const toComponents = async (modules, parentName) => {
+const routeFun = (parentNames) => {
+  const toComponents = (modules, parentName) => {
     let routes = [];
     for (const path of Object.keys(modules)) {
       // path 是类似 "/src/views/Home/HomePage.vue" 的字符串
       // 我们需要从中提取出组件名或路由名
-      const componentName = path
-        .split('/')
-        .pop()
-        .replace(/\.\w+$/, '');
+      // prettier-ignore
+      const componentName = path.split("/").pop().replace(/\.\w+$/, "");
       // console.log("componentName", componentName);
       if (componentName !== 'index') {
-        const meta = await getComponentMeta(path);
+        // console.log('path.meta', modules[path].meta);
         routes.push({
           path: componentName === 'DefaultHome' ? '' : `${componentName.toLowerCase()}`,
           name: `${componentName === 'DefaultHome' ? parentName : ''}${componentName}`,
           meta: {
-            ...meta,
+            ...modules[path].meta,
             show: true
           },
           component: () => import(`@/views/${parentName}/${componentName}.vue`)
@@ -38,23 +28,20 @@ const routeFun = async (parentNames) => {
   let routeArray = [];
   const promises = [];
   for (const item of parentNames) {
-    let promise;
+    // prettier-ignore
     if (item === 'Home') {
-      promise = toComponents(import.meta.glob('../views/Home/*.vue'), item);
+      routeArray= routeArray.concat(toComponents(import.meta.glob('../views/Home/*.vue', { eager: true }), item));
     } else if (item === 'Layout') {
-      promise = toComponents(import.meta.glob('../views/Layout/*.vue'), item);
-    }
-    if (promise) {
-      promises.push(promise.then((arr) => routeArray.push(...arr)));
+      routeArray= routeArray.concat(toComponents(import.meta.glob('../views/Layout/*.vue', { eager: true }), item));
     }
   }
-  await Promise.all(promises); // 等待所有异步操作完成
+  // console.log('routeArray', routeArray);
   return routeArray;
 };
 
-let homeChildrenCom = await routeFun(['Home']);
-// console.log('homeChildrenCom', homeChildrenCom);
-let layoutChildrenCom = await routeFun(['Layout']);
+let homeChildrenCom = routeFun(['Home']);
+// console.log("homeChildrenCom", homeChildrenCom);
+let layoutChildrenCom = routeFun(['Layout']);
 // 定义路由
 // 每个路由应该映射一个组件。这里，我们使用'path'来定义URL路径，'component'来定义对应的组件
 const routes = [
