@@ -9,6 +9,7 @@ const routeFun = (parentNames) => {
   const toComponents = (modules, parentName) => {
     let routes = [];
     for (const path of Object.keys(modules)) {
+      // console.log('modeles', modules);
       // path 是类似 "/src/views/Home/HomePage.vue" 的字符串
       // 我们需要从中提取出组件名或路由名
       // prettier-ignore
@@ -23,7 +24,7 @@ const routeFun = (parentNames) => {
             ...modules[path].meta,
             show: true
           },
-          component: () => import(`@/views/${parentName}/${componentName}.vue`)
+          component: modules[path].default
         });
       }
     }
