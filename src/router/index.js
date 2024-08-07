@@ -1,5 +1,5 @@
 // 引入Vue和VueRouter
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 // Object.entries(import.meta.glob('../views/Home/*.vue', { eager: true })).map(([path, page]) => {
 //   console.log('path,page', path, page);
@@ -78,7 +78,7 @@ const routes = [
 
 // 创建router实例，然后传`routes`配置和`history`模式
 const router = createRouter({
-  history: createWebHistory(), // 使用HTML5 History模式
+  history: createWebHashHistory(), // 使用HTML5 History模式
   routes // （缩写）相当于 routes: routes
 });
 router.beforeEach((to, from, next) => {
