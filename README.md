@@ -20,6 +20,7 @@
   npm install corejs // 兼容
   npm install eslint eslint-plugin-vue eslint-config-prettier eslint-plugin-prettier prettier --save-dev  // eslint 暂时没有使用
   npm install typescript --save-dev // ts
+  npm install --save-dev @vitejs/plugin-legacy 
   npm install @vue/cli-plugin-typescript --save-dev // ts
   npm install --save-dev @types/node // ts
   npm install --save-dev js-cookie // Cookie来实现记住密码功能（js-cookie）,使用jsencrypt对密码进行加密解密

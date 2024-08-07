@@ -1,5 +1,5 @@
 // 引入Vue和VueRouter
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 // 获取文件夹下的文件列表，然后拼成路由对象
 const routeFun = (parentNames) => {
   const toComponents = (modules, parentName) => {
@@ -19,7 +19,8 @@ const routeFun = (parentNames) => {
             ...modules[path].meta,
             show: true
           },
-          component: () => import(`@/views/${parentName}/${componentName}.vue`)
+          // component: () => import(`@/views/${parentName}/${componentName}.vue`)
+          component: modules[path].default
         });
       }
     }
@@ -73,7 +74,7 @@ const routes = [
 
 // 创建router实例，然后传`routes`配置和`history`模式
 const router = createRouter({
-  history: createWebHistory(), // 使用HTML5 History模式
+  history: createWebHashHistory(), // 使用HTML5 History模式
   routes // （缩写）相当于 routes: routes
 });
 router.beforeEach((to, from, next) => {
