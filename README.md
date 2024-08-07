@@ -28,6 +28,8 @@
   npm i --save-dev @types/js-cookie // ts版本的
   npm install --save-dev lodash-es // lodash es6版本
 
+  npm install --save-dev gsap // 动画
+
 
   
   <!-- 删除node_modules 和 package-lock.json -->
