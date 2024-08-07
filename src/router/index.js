@@ -1,5 +1,9 @@
 // 引入Vue和VueRouter
 import { createRouter, createWebHistory } from 'vue-router';
+
+// Object.entries(import.meta.glob('../views/Home/*.vue', { eager: true })).map(([path, page]) => {
+//   console.log('path,page', path, page);
+// });
 // 获取文件夹下的文件列表，然后拼成路由对象
 const routeFun = (parentNames) => {
   const toComponents = (modules, parentName) => {
