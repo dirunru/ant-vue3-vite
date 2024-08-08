@@ -47,6 +47,16 @@ const routes = [
     },
   },
   {
+    path: "/watch",
+    name: "Watch",
+    meta: { transition: "slide-right" },
+    component: () => import("@/views/Watch.vue"),
+    beforeEnter: (to, from) => {
+      console.log("路由独享守卫：只在进入路由时触发");
+      // return false;
+    },
+  },
+  {
     // /:id(\\d+) -> 仅匹配数字
     // *（0 个或多个）和 +（1 个或多个）
     // /:chapters+ ->  匹配 /one, /one/two, /one/two/three, 等
