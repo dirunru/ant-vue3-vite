@@ -49,7 +49,7 @@
             aspectScale: 1, // 长宽比
             zoom: 1, //缩放
             roam: true, //是否开启鼠标缩放和平移漫游
-            showLegendSymbol: false,
+            showLegendSymbol: false, // 是否显示图例颜色标识（颜色条）
             label: {
               show: true,
               color: '#fff',
@@ -75,9 +75,9 @@
               }
             },
             layoutCenter: ['50%', '50%'],
-            layoutSize: '160%',
+            layoutSize: '160%', //缩放比例
             markPoint: {
-              symbol: 'none'
+              symbol: 'none' // 标记点
             },
             data: data
           }
