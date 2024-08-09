@@ -52,14 +52,14 @@
             showLegendSymbol: false, // 是否显示图例颜色标识（颜色条）
             label: {
               show: true,
-              color: '#fff',
+              color: 'red',
               fontSize: 10
             },
             itemStyle: {
-              areaColor: '#0E95F1',
-              borderColor: '#e9e9e9',
+              areaColor: '#7fffd4',
+              borderColor: '#0E95F1',
               borderWidth: 1,
-              shadowColor: '#0E95F1',
+              shadowColor: '#7fffd4',
               shadowBlur: 20
             },
             emphasis: {
