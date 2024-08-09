@@ -221,7 +221,6 @@
               areaColor: '#2B91B7'
             }
           },
-          roam: true,
           animation: false,
           data: data
         },
