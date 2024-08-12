@@ -232,6 +232,7 @@
           symbolSize: function (val) {
             return 15;
           },
+          // 动画
           showEffectOn: 'render',
           rippleEffect: {
             brushType: 'stroke'

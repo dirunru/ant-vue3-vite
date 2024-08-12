@@ -604,7 +604,7 @@
             {
               //  name: 'Top 5',
               type: 'effectScatter',
-              coordinateSystem: 'geo',
+              coordinateSystem: 'geo', //地图
               data: convertData(
                 mapData[n]
                   .sort(function (a, b) {
@@ -615,7 +615,8 @@
               symbolSize: function (val) {
                 return val[2] / 10;
               },
-              showEffectOn: 'render',
+              showEffectOn: 'render', //render渲染
+              //rippleEffect涟漪
               rippleEffect: {
                 brushType: 'stroke'
               },
@@ -675,20 +676,6 @@
       myChart.setOption(optionXyMap01);
     });
   });
-
-  const randomNum = function (minNum, maxNum) {
-    switch (arguments.length) {
-      case 1:
-        return parseInt(Math.random() * minNum + 1, 10);
-        break;
-      case 2:
-        return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
-        break;
-      default:
-        return 0;
-        break;
-    }
-  };
 </script>
 <style lang="less" scoped>
   .echart-china {
