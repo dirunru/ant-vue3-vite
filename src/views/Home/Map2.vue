@@ -49,7 +49,7 @@
     海南: [110.3893, 19.8516],
     上海: [121.4648, 31.2891]
   };
-
+  // 不同时间轴的时候展示不同的数据
   var d1 = {
     江苏: 10041,
     黑龙江: 4093,
@@ -333,13 +333,11 @@
         }
         return res;
       };
-
       var convertToLineData = function (data, gps) {
         var res = [];
         for (var i = 0; i < data.length; i++) {
           var dataItem = data[i];
           var toCoord = geoCoordMap[dataItem.name];
-          debugger;
           var fromCoord = gps; //郑州
           //  var toCoord = geoGps[Math.random()*3];
           if (fromCoord && toCoord) {
@@ -401,6 +399,7 @@
             }
           }
         },
+        // 底部时间轴
         baseOption: {
           animation: true,
           animationDuration: 1000,
