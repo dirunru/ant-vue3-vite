@@ -7,7 +7,6 @@
 <script setup>
   import { ref, reactive, onMounted } from 'vue';
   import * as echarts from 'echarts';
-  import chinaJSON from '../../assets/constant/chain.json';
   import axios from 'axios';
   const mapName = '河南';
   const chinaMap = ref(null);

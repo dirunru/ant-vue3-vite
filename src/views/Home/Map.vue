@@ -207,7 +207,7 @@
         {
           type: 'map',
           map: mapName,
-          geoIndex: 0,
+          geoIndex: 0, //地图索引
           aspectScale: 0.9, //长宽比
           zoom: 1,
           showLegendSymbol: true, //是否显示图例颜色标识（颜色条）
