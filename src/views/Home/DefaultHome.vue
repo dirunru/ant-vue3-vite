@@ -6,12 +6,10 @@
   import { reqGetBannerList } from '@/api';
   import { useRouter } from 'vue-router';
   import { gsap } from 'gsap';
+  import STimely from '@/components/STimely.vue';
   const { push } = useRouter();
   const { useToken } = theme;
   const { token } = useToken();
-  defineProps({
-    msg: String
-  });
   const fetchData = async () => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -57,7 +55,7 @@
 
 <template>
   <div class="s-body">
-    <h1>{{ msg }}</h1>
+    <STimely />
     <a-space wrap>
       <div class="circle" :style="{ backgroundColor: token.colorPrimary }" @click="go">234</div>
       <a-button @click="showAuth = true">树穿梭框</a-button>
