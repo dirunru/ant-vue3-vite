@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import { SUCCESS_CODE } from '@/common/type'
 import { message } from 'ant-design-vue'
-import { useSeverLoadingStore } from '@/myLoadings/severLoading' // 引入定义的myLoading 
+import { useSeverLoadingStore } from '@/stores/severLoading' // 引入定义的myLoading 
 
 
 const token = localStorage.getItem('token');  
