@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import { SUCCESS_CODE } from '@/common/type'
 import { message } from 'ant-design-vue'
-import { useSeverLoadingStore } from '@/stores/severLoading' // 引入定义的store 
+import { useSeverLoadingStore } from '@/myLoadings/severLoading' // 引入定义的myLoading 
 
 
 const token = localStorage.getItem('token');  
@@ -22,11 +22,11 @@ class RequestHttp {
      * @description 请求拦截器
      */
     this.service.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-      const store = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
+      const myLoading = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
       console.log("🚀 ~ file: index.ts:28 ~ config:", config)
       const loadingWhiteList:string[] = []; // 请求白名单
       if (!loadingWhiteList.includes(config?.url ?? '')) { // 如果白名单中没有请求的url,则加载loading
-        store.isLoading(true)
+        myLoading.isLoading(true)
       }
       return config
     },(error: any) => {
@@ -38,9 +38,9 @@ class RequestHttp {
      */
     this.service.interceptors.response.use(
       (response: AxiosResponse) => {
-        const store = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
+        const myLoading = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
         // console.log(response, 'response');
-        store.isLoading(false)
+        myLoading.isLoading(false)
         const { data, config, status } = response
         if (SUCCESS_CODE.includes(data.code) || config.responseType == 'blob') {
           return Promise.resolve(data.data) 
@@ -50,8 +50,8 @@ class RequestHttp {
         }
       },
       (error: AxiosError) => {
-        const store = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
-        store.isLoading(false)
+        const myLoading = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
+        myLoading.isLoading(false)
         const { response } = error
         if (response) {
           // 请求已发出，但是不在2xx的范围

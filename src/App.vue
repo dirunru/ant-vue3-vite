@@ -1,8 +1,8 @@
 <script setup>
   import { storeToRefs } from 'pinia';
   import { useSeverLoadingStore } from '@/stores/severLoading';
-  const store = useSeverLoadingStore();
-  const { loading } = storeToRefs(store); //解构赋值，数据双向绑定，关联store
+  const myLoading = useSeverLoadingStore();
+  const { loading } = storeToRefs(myLoading); //解构赋值，数据双向绑定，关联store
 </script>
 
 <template>

@@ -10,5 +10,6 @@ export const useSeverLoadingStore = defineStore('myLoading', {
     isLoading(val: boolean) {
       this.loading = val;
     }
-  }
+  },
+  persist: true
 });
