@@ -83,6 +83,8 @@ router.beforeEach((to, from, next) => {
   let isLoadRouters = false;
   let isLogin = false;
   const token = localStorage.getItem('token');
+  isLoadRouters = token ?? false;
+  isLogin = token ?? false;
   if (token && isLogin) {
     if (isLoadRouters) {
       //登录成功后不能通过历史箭头返回登录页面

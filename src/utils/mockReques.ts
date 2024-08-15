@@ -2,8 +2,8 @@ import axios, { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestCo
 import { SUCCESS_CODE } from '@/common/type'
 import { message } from 'ant-design-vue'
 import { useSeverLoadingStore } from '@/stores/severLoading' // 引入定义的store 
-const store = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
-console.log('111', 111)
+
+
 const token = localStorage.getItem('token');  
 const config = {
   baseURL: '/mock',
@@ -16,13 +16,13 @@ const config = {
 }
 class RequestHttp {
   service: AxiosInstance
-
   constructor() {
     this.service = axios.create(config)
     /**
      * @description 请求拦截器
      */
     this.service.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+      const store = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
       console.log("🚀 ~ file: index.ts:28 ~ config:", config)
       const loadingWhiteList:string[] = []; // 请求白名单
       if (!loadingWhiteList.includes(config?.url ?? '')) { // 如果白名单中没有请求的url,则加载loading
@@ -30,41 +30,32 @@ class RequestHttp {
       }
       return config
     },(error: any) => {
-      store.isLoading(false)
       Promise.reject(error);
     })
 
     /**
      * @description 响应拦截器
      */
-    
-    
     this.service.interceptors.response.use(
       (response: AxiosResponse) => {
-        console.log(response, 'response');
+        const store = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
+        // console.log(response, 'response');
         store.isLoading(false)
         const { data, config, status } = response
-        if (SUCCESS_CODE.includes(data.code)) {
-          if(data.code === 0 || config.responseType == 'blob'){
-            return Promise.resolve(response.data)
-          } else {
-            message.error(data.message)
-            return Promise.reject(data);
-          }
+        if (SUCCESS_CODE.includes(data.code) || config.responseType == 'blob') {
+          return Promise.resolve(data.data) 
         } else {
-          message.error(status)
+          message.error(checkStatus(status))
           return Promise.reject(data);
         }
       },
       (error: AxiosError) => {
+        const store = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
         store.isLoading(false)
         const { response } = error
         if (response) {
-          checkStatus(response.status)
-        }
-        if (response) {
           // 请求已发出，但是不在2xx的范围
-          message.error(response.status)
+          message.error(checkStatus(response.status))
           return Promise.reject(response.data);
         } else {
           message.error('网络连接异常,请稍后再试!')

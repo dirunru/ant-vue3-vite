@@ -1,6 +1,8 @@
 <script setup>
+  import { storeToRefs } from 'pinia';
   import { useSeverLoadingStore } from '@/stores/severLoading';
   const store = useSeverLoadingStore();
+  const { loading } = storeToRefs(store); //解构赋值，数据双向绑定，关联store
 </script>
 
 <template>
@@ -11,7 +13,7 @@
       }
     }"
   >
-    <a-spin :spinning="store.loading" class="fullLoading" tip="Loading...">
+    <a-spin :spinning="loading" class="fullLoading" tip="Loading...">
       <router-view />
     </a-spin>
   </a-config-provider>
