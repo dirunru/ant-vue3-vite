@@ -87,6 +87,8 @@ router.beforeEach((to, from, next) => {
   let isLoadRouters = true; // 这里应该有一个逻辑来判断路由是否已加载，例如从Vuex或全局变量中
   let isLogin = true;
   const token = localStorage.getItem('token');
+  isLoadRouters = token ?? false;
+  isLogin = token ?? false;
   if (token && isLogin) {
     // 如果已经加载了路由且用户尝试访问登录页面，则重定向到首页（或其他非登录页面)
     if (isLoadRouters) {

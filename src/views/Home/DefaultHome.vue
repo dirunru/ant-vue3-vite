@@ -68,7 +68,6 @@
     <TransferTree v-model:visible="showAuth"></TransferTree>
   </div>
 </template>
-
 <style lang="less" scoped>
   .circle {
     width: 100px;
