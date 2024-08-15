@@ -21,6 +21,7 @@ export const useSeverLoadingStore = defineStore('myLoading', {
     },
     initCount() {
       this.loadingCount = 0;
+      this.loading = false;
     }
   },
   persist: {
