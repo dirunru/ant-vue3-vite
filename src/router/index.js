@@ -1,5 +1,6 @@
 // 引入Vue和VueRouter
 import { createRouter, createWebHashHistory } from 'vue-router';
+import { useSeverLoadingStore } from '@/stores/severLoading';
 
 // Object.entries(import.meta.glob('../views/Home/*.vue', { eager: true })).map(([path, page]) => {
 //   console.log('path,page', path, page);
@@ -82,6 +83,7 @@ const router = createRouter({
   routes // （缩写）相当于 routes: routes
 });
 router.beforeEach((to, from, next) => {
+  const myLoading = useSeverLoadingStore();
   //asyncRoutesMark:是否加载了路由信息，为false则要请求路由接口
   //isLogin:登录状态
   let isLoadRouters = true; // 这里应该有一个逻辑来判断路由是否已加载，例如从Vuex或全局变量中
@@ -92,6 +94,7 @@ router.beforeEach((to, from, next) => {
   if (token && isLogin) {
     // 如果已经加载了路由且用户尝试访问登录页面，则重定向到首页（或其他非登录页面)
     if (isLoadRouters) {
+      myLoading.initCount();
       if (to.path === '/login') {
         next('/');
       } else {
