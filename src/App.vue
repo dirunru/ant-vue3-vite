@@ -1,28 +1,23 @@
 <script setup>
+  import { useSeverLoadingStore } from '@/stores/severLoading';
+  const store = useSeverLoadingStore();
 </script>
 
 <template>
-	<a-config-provider
-		:theme="{
-			token: {
-				colorPrimary: '#00b96b'
-			}
-		}"
-	>
-		<router-view />
-	</a-config-provider>
+  <a-config-provider
+    :theme="{
+      token: {
+        colorPrimary: '#00b96b'
+      }
+    }"
+  >
+    <a-spin :spinning="store.loading" class="fullLoading" tip="Loading...">
+      <router-view />
+    </a-spin>
+  </a-config-provider>
 </template>
 <style scoped>
-.logo {
-	height: 6em;
-	padding: 1.5em;
-	will-change: filter;
-	transition: filter 300ms;
-}
-.logo:hover {
-	filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-	filter: drop-shadow(0 0 2em #42b883aa);
-}
+  .fullLoading {
+    height: 100vh;
+  }
 </style>
