@@ -29,6 +29,8 @@ class RequestHttp {
       }
       return config
     },(error: any) => {
+      const myLoading = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
+      myLoading.initCount()
       Promise.reject(error);
     })
 
@@ -50,7 +52,7 @@ class RequestHttp {
       },
       (error: AxiosError) => {
         const myLoading = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
-        myLoading.isCloseLoading()
+        myLoading.initCount()
         const { response } = error
         if (response) {
           // 请求已发出，但是不在2xx的范围
