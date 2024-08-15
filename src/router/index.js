@@ -1,5 +1,6 @@
 // 引入Vue和VueRouter
 import { createRouter, createWebHashHistory } from 'vue-router';
+import { useSeverLoadingStore } from '@/stores/severLoading';
 // 获取文件夹下的文件列表，然后拼成路由对象
 const routeFun = (parentNames) => {
   const toComponents = (modules, parentName) => {
@@ -78,6 +79,7 @@ const router = createRouter({
   routes // （缩写）相当于 routes: routes
 });
 router.beforeEach((to, from, next) => {
+  const myLoading = useSeverLoadingStore();
   //asyncRoutesMark:是否加载了路由信息，为false则要请求路由接口
   //isLogin:登录状态
   let isLoadRouters = false;
@@ -87,6 +89,7 @@ router.beforeEach((to, from, next) => {
   isLogin = token ?? false;
   if (token && isLogin) {
     if (isLoadRouters) {
+      myLoading.initCount();
       //登录成功后不能通过历史箭头返回登录页面
       if (to.path !== '/login') {
         next();

@@ -18,6 +18,10 @@ export const useSeverLoadingStore = defineStore('myLoading', {
       if (this.loadingCount == 0) {
         this.loading = false;
       }
+    },
+    initCount() {
+      this.loadingCount = 0;
+      this.loading = false;
     }
   },
   persist: {
