@@ -3,7 +3,6 @@ import { SUCCESS_CODE } from '@/common/type'
 import { message } from 'ant-design-vue'
 import { useSeverLoadingStore } from '@/stores/severLoading' // 引入定义的myLoading 
 
-
 const token = localStorage.getItem('token');  
 const config = {
   baseURL: '/mock',
@@ -26,7 +25,7 @@ class RequestHttp {
       console.log("🚀 ~ file: index.ts:28 ~ config:", config)
       const loadingWhiteList:string[] = []; // 请求白名单
       if (!loadingWhiteList.includes(config?.url ?? '')) { // 如果白名单中没有请求的url,则加载loading
-        myLoading.isLoading(true)
+        myLoading.addLoading()
       }
       return config
     },(error: any) => {
@@ -40,7 +39,7 @@ class RequestHttp {
       (response: AxiosResponse) => {
         const myLoading = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
         // console.log(response, 'response');
-        myLoading.isLoading(false)
+        myLoading.isCloseLoading()
         const { data, config, status } = response
         if (SUCCESS_CODE.includes(data.code) || config.responseType == 'blob') {
           return Promise.resolve(data.data) 
@@ -51,7 +50,7 @@ class RequestHttp {
       },
       (error: AxiosError) => {
         const myLoading = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
-        myLoading.isLoading(false)
+        myLoading.isCloseLoading()
         const { response } = error
         if (response) {
           // 请求已发出，但是不在2xx的范围
