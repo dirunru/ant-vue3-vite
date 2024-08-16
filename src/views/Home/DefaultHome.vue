@@ -12,9 +12,7 @@
   const { token } = useToken();
   const fetchData = async () => {
     return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve('111');
-      }, 1000);
+      resolve('111');
     });
   };
   window.$log.info('测试全局花式打印');
