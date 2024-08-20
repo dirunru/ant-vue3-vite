@@ -30,6 +30,7 @@
   npm install --save-dev lodash-es // lodash es6版本
 
   npm install --save-dev gsap // 动画
+  npm install --save-dev vue3-seamless-scroll // 无缝滚动
 
 
   

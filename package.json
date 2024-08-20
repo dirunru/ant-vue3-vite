@@ -40,6 +40,7 @@
     "typescript": "^5.5.4",
     "unplugin-auto-import": "^0.18.0",
     "unplugin-vue-components": "^0.27.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vue3-seamless-scroll": "^2.0.1"
   }
 }
