@@ -3,7 +3,9 @@
     <input type="checkbox" id="toggle" /> Toggle Cards
     <div class="card">Card 1</div>
     <div class="card">Card 2</div>
-    <div class="other">Other Element</div>
+
+    <div class="gradient-text">文字渐变</div>
+    <div class="gradient-text1">文字渐变</div>
   </div>
 </template>
 
@@ -24,6 +26,23 @@
   }
   #toggle:checked ~ .card {
     max-height: 500px;
+  }
+  .gradient-text {
+    font-size: 48px;
+    font-weight: bold;
+    background: -webkit-linear-gradient(top, rgba(49, 190, 255, 0.36) 20.38%, rgba(255, 255, 255, 0.36) 81.17%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* text-shadow: 0 0 2px #051c37; */
+    display: inline-block;
+  }
+  .gradient-text1 {
+    font-size: 48px;
+    font-weight: bold;
+    background: -webkit-linear-gradient(180deg, rgba(49, 190, 255, 0.36) 20.38%, rgba(255, 255, 255, 0.36) 81.17%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
   }
 </style>
 <script>
