@@ -9,7 +9,8 @@
     <div class="animate_item">7</div>
     <div class="animate_item">8</div>
   </div> -->
-  <SScrollList :columns="columns" :dataSource="dataSource" :headerHeight="40" :rowHeigh="32" :scroll="true" :height="150"></SScrollList>
+  <a-button @click="add">添加</a-button>
+  <SScrollList :columns="columns" :dataSource="dataSource" :headerHeight="40" :rowHeigh="32" :scroll="true" :height="200"></SScrollList>
 </template>
 
 <script setup>
@@ -64,6 +65,14 @@
       address: 'Ottawa No. 2 Lake Park'
     }
   ]);
+  const add = () => {
+    dataSource.push({
+      key: dataSource.length + 1,
+      name: `${dataSource.length + 1}-Jon Snow`,
+      age: 31,
+      address: 'Ottawa No. 2 Lake Park'
+    });
+  };
   // function scrollAnimate() {
   //   let domArray = document.getElementsByClassName('animate_item');
   //   let domFirst = domArray[0];
