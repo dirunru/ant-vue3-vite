@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="s-body">
     <pre>
       1、setTimeout虽然也可以实现，但是页面来回切换会导致时间混乱
     </pre>
@@ -11,7 +11,16 @@
     <!-- <SScrollList :columns="columns" :dataSource="dataSource" :headerHeight="40" :rowHeigh="32" :scroll="true" :height="200"></SScrollList> -->
 
     <div class="scrollBox">
-      <vue3-seamless-scroll :list="scrollListArr" class="scroll" v-if="scrollFlag" :step="0.5" :singleHeight="38" :hover="true" :limitScrollNum="5">
+      <vue3-seamless-scroll
+        :list="scrollListArr"
+        class="scroll"
+        v-if="scrollFlag"
+        :step="0.5"
+        :singleHeight="38"
+        :limitScrollNum="5"
+        wheel
+        hover
+      >
         <div v-for="(item, index) in scrollListArr" :key="item.id">
           <span>{{ item.rate }} - {{ index }}</span>
         </div>
@@ -129,7 +138,7 @@
     height: 190px;
     .scroll {
       height: 190px;
-      overflow: hidden;
+      overflow-y: auto;
       div {
         height: 38px;
         line-height: 38px;

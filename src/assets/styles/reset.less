@@ -1,0 +1,20 @@
+/* 滚动条 全局的*/
+body *::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+body *::-webkit-scrollbar-track { // 滚动条的轨道
+  background: transparent;
+  border-radius: 2px;
+}
+body *::-webkit-scrollbar-thumb { // 滚动条的滑块
+  background: rgb(205, 206, 206);
+
+  border-radius: 10px;
+}
+body *::-webkit-scrollbar-thumb:hover { // 滚动条滑块hover时的样式
+  background: #333;
+}
+body *::-webkit-scrollbar-corner { // 滚动条的角落
+  background: transparent;
+}
