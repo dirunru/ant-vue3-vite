@@ -1,10 +1,13 @@
 <template>
   <div>
     <pre>
-      setTimeout虽然也可以实现，但是页面来回切换会导致时间混乱
+      1、setTimeout虽然也可以实现，但是页面来回切换会导致时间混乱
     </pre>
     <pre>
-      window.requestAnimationFrame实现
+      2、window.requestAnimationFrame实现
+    </pre>
+    <pre>
+      3、vue3-seamless-scroll - npm
     </pre>
     <a-button @click="add">添加</a-button>
     <SScrollList :columns="columns" :dataSource="dataSource" :headerHeight="40" :rowHeigh="32" :scroll="true" :height="200"></SScrollList>
