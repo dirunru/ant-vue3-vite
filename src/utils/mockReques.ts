@@ -13,6 +13,27 @@ const config = {
     'Authorization': `Bearer ${token}` // 从本地存储中获取 token 并设置到请求头中 
   }
 }
+
+class CancelControl {
+  /* 构造函数 */
+  constructor() {
+    this.allCancelApi = {}
+  }
+  /* 此方法记录请求函数 calcelAPI:接口名称或者url */
+  setAbortAPI(calcelAPI:string): axios.CancelToken {
+    const CancelToken = axios.CancelToken
+    const source = CancelToken.source()
+    this.allCancelApi[calcelAPI] = source
+    return source.token
+  }
+  /* 执行此方法取消请求 calcelAPI:接口名称或者url */
+  abort(calcelAPI:string):viod {
+    if (this.allCancelApi[calcelAPI]) {
+      this.allCancelApi[calcelAPI].cancel('Cancel')
+    }
+  }
+}
+const cancelControl = new CancelControl()
 class RequestHttp {
   service: AxiosInstance
   constructor() {
@@ -21,6 +42,12 @@ class RequestHttp {
      * @description 请求拦截器
      */
     this.service.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+      // 取消请求
+      if (config?.multipleCancel) {
+        // 如果设置了连续请求时取消之前的请求
+        cancelControl.abort(config.url)
+        config.cancelToken = cancelControl.setAbortAPI(config.url) /* axios  v0.22.0以下版本  */
+      }
       const myLoading = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
       console.log("🚀 ~ file: index.ts:28 ~ config:", config)
       const loadingWhiteList:string[] = []; // 请求白名单
@@ -93,6 +120,9 @@ const checkStatus = (status: number): string => {
       return '请求方式错误！'
     case 500:
       return '服务器异常！'
+    // 取消请求
+    case undefined:
+      return ''
     default:
       return '请求失败！'
   }
