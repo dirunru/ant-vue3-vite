@@ -21,6 +21,7 @@ class CancelControl {
   }
   /* 此方法记录请求函数 calcelAPI:接口名称或者url */
   setAbortAPI(calcelAPI:string): axios.CancelToken {
+    // 1、创建取消标记
     const CancelToken = axios.CancelToken
     const source = CancelToken.source()
     this.allCancelApi[calcelAPI] = source
@@ -29,6 +30,7 @@ class CancelControl {
   /* 执行此方法取消请求 calcelAPI:接口名称或者url */
   abort(calcelAPI:string):viod {
     if (this.allCancelApi[calcelAPI]) {
+      // 4、source.cancel
       this.allCancelApi[calcelAPI].cancel('Cancel')
     }
   }
@@ -44,8 +46,9 @@ class RequestHttp {
     this.service.interceptors.request.use((config: InternalAxiosRequestConfig) => {
       // 取消请求
       if (config?.multipleCancel) {
-        // 如果设置了连续请求时取消之前的请求
+        // 如果设置了连续请求时取消之前的请求，取消请求
         cancelControl.abort(config.url)
+        // 2、发送请求并关联取消标记
         config.cancelToken = cancelControl.setAbortAPI(config.url) /* axios  v0.22.0以下版本  */
       }
       const myLoading = useSeverLoadingStore() // 调用方法,控制加载动画的开启关闭
