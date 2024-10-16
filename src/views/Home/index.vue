@@ -2,7 +2,7 @@
   <div class="s-body">
     <a-card bordered class="box-content">
       <div class="head-title">
-        <a-space>
+        <a-space wrap>
           <template v-for="item in routerList" :key="item.name">
             <a-button @click="goPage(item)">{{ item?.meta?.title }}</a-button>
           </template>
