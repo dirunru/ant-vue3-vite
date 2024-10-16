@@ -32,6 +32,10 @@
   npm install --save-dev gsap // 动画
   npm install --save-dev vue3-seamless-scroll // 无缝滚动
 
+  npm install --save-dev echarts-liquidfill // 专门创建水球图
+  npm install --save-dev echarts-wordcloud // 专门创建词云图
+  npm install --save-dev echarts-gl // 专门创建3D图
+
 
   
   <!-- 删除node_modules 和 package-lock.json -->
