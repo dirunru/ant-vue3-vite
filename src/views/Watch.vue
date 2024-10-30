@@ -68,13 +68,16 @@
   // 因此，如果你直接在回调中比较新旧值（使用 ===），它们会被认为是相同的（因为它们是同一个对象的引用）。
   // 错误的监听：虽然监听到数据变化了，但是新值和旧值一样
   watch(c, (newValue, oldValue) => {
-    console.log('c', 'newValue:', newValue, 'oldValue:', oldValue);
+    console.log('c：错误', 'newValue:', newValue, 'oldValue:', oldValue);
   });
+  watch(c, (newValue, oldValue) => {
+    console.log('c-deep:错误', 'newValue:', newValue, 'oldValue:', oldValue);
+  }, { deep: true });
   // 正确的监听
   watch(
     () => c.x,
     (newValue, oldValue) => {
-      console.log('c', 'newValue:', newValue, 'oldValue:', oldValue);
+      console.log('c:正确', 'newValue:', newValue, 'oldValue:', oldValue);
     }
   );
 
