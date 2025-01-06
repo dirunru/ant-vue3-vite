@@ -10,6 +10,7 @@
 			<div class="circle" :style="{ backgroundColor: token.colorPrimary }"></div> -->
         <button @click="show = !show">Toggle</button>
         <button @click="goPage('About1')">关于</button>
+        <button @click="goPage('More')">加载更多</button>
         <button @click="goPage('Store')">状态管理</button>
         <button @click="goPage('User')">用户列表</button>
         <button @click="goPage('Watch')">watch监听</button>
